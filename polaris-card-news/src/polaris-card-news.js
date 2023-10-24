@@ -100,20 +100,20 @@ class PolarisChip extends LitElement {
 
   constructor() {
     super();
-    this.month = 'Sept';
-    this.day = '25';
+    this.month = 'Oct';
+    this.day = '14';
   }
 
   render() {
     return html`
       <div class="card-container">
         <div class="top-title">
-        
+          <h2>Recent News</h2>
         </div>
         <div class = "inner-container">
         <div class="images">
-          <a href="https://hr.psu.edu/news/2024-benefits-open-enrollment-information-now-available">
-            <img src="https://hr.psu.edu/sites/hr/files/styles/article_home_page/public/2023-09/BOEInformation_HRFeature.jpg?h=09bc788e&itok=ZDBRn6_B" alt="picture :D" width="386" height="171">
+          <a href="https://hr.psu.edu/news/university-reminds-employees-flu-covid-19-vaccines-resources-and-policies">
+            <img src="https://hr.psu.edu/sites/hr/files/styles/article_home_page/public/2023-10/FluVaccines_HRFeature.jpg?h=09bc788e&itok=KEMIew2T" alt="picture :D" width="386" height="171">
           </a>
         </div>
         <div class="mid-wrapper">
@@ -126,13 +126,12 @@ class PolarisChip extends LitElement {
             </div>
           </div>
           <div class="title">
-            <label class="desc"><a style="text-decoration:none" href="https://hr.psu.edu/news/2024-benefits-open-enrollment-information-now-available">2024 Benefits Open Enrollment information now available
-</label></a>
+            <label class="desc"><a style="text-decoration:none" href="https://hr.psu.edu/news/university-reminds-employees-flu-covid-19-vaccines-resources-and-policies"> University reminds employees of flu, COVID-19 vaccines, resources and policies</label></a>
           </div>
         </div>
         <div class="short-desc">
           <div property="schema:text" class="desc-text"></div>
-          <p>2024 Benefits Open Enrollment Information Now Available</p>
+          <p>Updated information for University employees, as it relates to flu and COVID-19 vaccine resources, health plan coverage, and absence policies.</p>
         </div>
         </div>
       </div>
