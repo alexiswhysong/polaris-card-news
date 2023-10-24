@@ -133,7 +133,7 @@ class PolarisChip extends LitElement {
         </div>
         <div class="short-desc">
           <div property="schema:text" class="desc-text"></div>
-          <p>Penn State's 2024 Benefits Open Enrollment starts, Monday, Nov. 6, and runs through 5 p.m. EST on Friday, Nov. 17. Information on health-care plan designs — which remain the same for 2024 — is available on a dedicated 2024 Benefits Open Enrollment section of the Penn State Human Resources website.</p>
+          <p>Penn State's 2024 Benefits Open Enrollment starts, Monday, Nov. 6, and runs through 5 p.m. EST on Friday, Nov. 17. Information on health-care plan designs — which remain the same for 2024 — is available on a dedicated 2024 Benefits Open Enrollment section of the Penn State Human Resources website.</p>
         </div>
         </div>
       </div>
