@@ -26,7 +26,7 @@ class PolarisChip extends LitElement {
         max-width: 400px;
         width: 400px;
         height: 400px;
-        text-align: center;
+        text-align: left;
         padding-left: 8px;
       }
 
@@ -68,6 +68,7 @@ class PolarisChip extends LitElement {
           font-family: 'Roboto',sans-serif;
           text-transform: capitalize;
           color: #96BEE6;
+            
       }
       .desc {
         font-family: 'Roboto',sans-serif;
@@ -86,7 +87,8 @@ class PolarisChip extends LitElement {
       
       .title .desc:hover{
         color: #1E407C;
-      }/*
+      }
+      
       .top-title {
         font-size: 1.5em;
         font-weight: 700;
@@ -95,8 +97,7 @@ class PolarisChip extends LitElement {
         padding-bottom: 0px;
         position: left;
         text-align: left;
-      }
-      /* Add styles for other elements as needed */
+      
       @media screen and (max-width: 600px) {
         .card-container {
           display: inline-block;
@@ -119,6 +120,7 @@ class PolarisChip extends LitElement {
 
   constructor() {
     super();
+    this.title = ''; 
     this.date = 'null';
     this.month = '';
     this.day = '';
@@ -131,6 +133,7 @@ class PolarisChip extends LitElement {
 
   render() {
     return html`
+  
       <div class="card-container">
         <div class="wrapper">
         <div class="images">
@@ -156,6 +159,7 @@ class PolarisChip extends LitElement {
           <p><slot>${this.botdesc}</slot></p>
         </div>
         </div>
+
       </div>
     `;
   }
