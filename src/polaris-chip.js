@@ -3,40 +3,43 @@ import { LitElement, html, css } from 'lit-element';
 class PolarisChip extends LitElement {
   static get properties() {
     return {
+      timestamp: {type: String},
+      date: { type: String},
       month: { type: String },
       day: { type: String },
+      link: { type: String},
+      botdesc: { type: String},
+      image: { type: String},
+      title: { type: String},
     };
   }
 
   static get styles() {
     return css`
-      .card-container {
-        background-color: #fff;
-        display:inline-block;
-        max-width: 400px; /* Set the maximum width of the card */
-        width: 100%; /* Make the card responsive within the parent container */
-        padding: 20px; /* Add padding for spacing */
-        border: 1px solid #ccc;
-        text-align: center;
-        position: relative;
-        margin-bottom: 200px;
+      :host {
+
       }
+      .card-container {
+        display: inline-block;
+        align-items: top;
+        background-color: #fff;
+        max-width: 400px;
+        width: 400px;
+        height: 400px;
+        text-align: center;
+        padding-left: 8px;
+      }
+
       .images {
         background-color: #005fa9;
         height: 171px;
+        width: 386px;
       }
       .images img:hover {
         opacity: 0.7;
       }
-      .images {
-        position: relative;
-        width: 90%;
-        height: 90%;
-        margin: 0;
-        padding: 0;
-        border-radius: 0px;
-      }
       .mid-wrapper {
+        padding-top: 15px;
         display: flex;
         flex-direction: row;
       }
@@ -48,7 +51,6 @@ class PolarisChip extends LitElement {
         font-size: 0.8em;
         font-weight: bold;
         line-height: 1.8;
-        padding: 1px 10px;
         text-transform: uppercase;
       }
       .day-label .day{
@@ -66,7 +68,6 @@ class PolarisChip extends LitElement {
           font-family: 'Roboto',sans-serif;
           text-transform: capitalize;
           color: #96BEE6;
-          
       }
       .desc {
         font-family: 'Roboto',sans-serif;
@@ -85,7 +86,7 @@ class PolarisChip extends LitElement {
       
       .title .desc:hover{
         color: #1E407C;
-      }
+      }/*
       .top-title {
         font-size: 1.5em;
         font-weight: 700;
@@ -96,25 +97,45 @@ class PolarisChip extends LitElement {
         text-align: left;
       }
       /* Add styles for other elements as needed */
+      @media screen and (max-width: 600px) {
+        .card-container {
+          display: inline-block;
+        }
+      }
     `;
   }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (["timestamp", "format", "unix"].includes(propName) && this.timestamp) {
+        let stamp = this.timestamp;
+        if (this.unix) {
+          stamp = stamp * 1000;
+        }
+        this.month = new Date(stamp).toLocaleString('default', { month: 'long'}).substring(0, 3);
+        this.day = new Date(stamp).getDate();
+      }
+    });
+   }
 
   constructor() {
     super();
-    this.month = 'Sept';
-    this.day = '25';
+    this.date = 'null';
+    this.month = '';
+    this.day = '';
+    this.botdesc = '';
+    this.image = '';
+    this.title = '';
+    this.link = " ";
+    this.timestamp = '';
   }
 
   render() {
     return html`
       <div class="card-container">
-        <div class="top-title">
-        
-        </div>
-        <div class = "inner-container">
+        <div class="wrapper">
         <div class="images">
-          <a href="https://hr.psu.edu/news/2024-benefits-open-enrollment-information-now-available">
-            <img src="https://hr.psu.edu/sites/hr/files/styles/article_home_page/public/2023-09/BOEInformation_HRFeature.jpg?h=09bc788e&itok=ZDBRn6_B" alt="picture :D" width="386" height="171">
+          <a class="link" href="${this.link}">
+            <img src="${this.image}" alt="picture :D" width="386" height="171">
           </a>
         </div>
         <div class="mid-wrapper">
@@ -127,13 +148,12 @@ class PolarisChip extends LitElement {
             </div>
           </div>
           <div class="title">
-            <label class="desc"><a style="text-decoration:none" href="https://hr.psu.edu/news/2024-benefits-open-enrollment-information-now-available">2024 Benefits Open Enrollment information now available
-</label></a>
+            <label class="desc"><a style="text-decoration:none" href="${this.link}"> <slot>${this.title}</slot></label></a>
           </div>
         </div>
         <div class="short-desc">
           <div property="schema:text" class="desc-text"></div>
-          <p>Penn State's 2024 Benefits Open Enrollment starts, Monday, Nov. 6, and runs through 5 p.m. EST on Friday, Nov. 17. Information on health-care plan designs — which remain the same for 2024 — is available on a dedicated 2024 Benefits Open Enrollment section of the Penn State Human Resources website.</p>
+          <p><slot>${this.botdesc}</slot></p>
         </div>
         </div>
       </div>
